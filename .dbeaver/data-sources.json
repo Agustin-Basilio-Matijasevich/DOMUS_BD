@@ -1,0 +1,69 @@
+{
+	"folders": {},
+	"connections": {
+		"mysql8-184b34faa0c-378a10255b7fe9c1": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "electronicanordeste.tplinkdns.com",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "electronicanordeste.tplinkdns.com",
+				"port": "42321",
+				"url": "jdbc:mysql://electronicanordeste.tplinkdns.com:42321/",
+				"home": "/usr/bin",
+				"type": "dev",
+				"properties": {
+					"connectTimeout": "20000",
+					"rewriteBatchedStatements": "true",
+					"enabledTLSProtocols": "TLSv1,TLSv1.1,TLSv1.2",
+					"allowPublicKeyRetrieval": "TRUE"
+				},
+				"auth-model": "native"
+			}
+		}
+	},
+	"virtual-models": {
+		"mysql8-184b34faa0c-378a10255b7fe9c1": {
+			"sample": {
+				"@properties": {
+					"erd.diagram.state": {
+						"serialized": "\u003cdiagram version\u003d\"1\" name\u003d\"empty\" time\u003d\"202210302106\"\u003e\u003centities\u003e\u003cdata-source id\u003d\"mysql8-1842ad608aa-3ff63b41d6b34dd0\"\u003e\u003centity id\u003d\"1\" name\u003d\"alumno\" fq-name\u003d\"sample.alumno\" order\u003d\"0\" x\u003d\"373\" y\u003d\"104\"\u003e\u003cpath name\u003d\"sample\"/\u003e\u003c/entity\u003e\u003centity id\u003d\"2\" name\u003d\"carrera\" fq-name\u003d\"sample.carrera\" order\u003d\"1\" x\u003d\"83\" y\u003d\"104\"\u003e\u003cpath name\u003d\"sample\"/\u003e\u003c/entity\u003e\u003c/data-source\u003e\u003c/entities\u003e\u003crelations\u003e\u003crelation name\u003d\"vfk_carrera_alumno\" type\u003d\"vfk\" pk-ref\u003d\"1\" fk-ref\u003d\"2\"/\u003e\u003c/relations\u003e\u003c/diagram\u003e"
+					}
+				},
+				":alumno": {
+					"constraints": {
+						"alumno_VK": {
+							"type": "vpk",
+							"attributes": [
+								"Cod_CarreraFK"
+							]
+						}
+					}
+				},
+				":carrera": {
+					"foreign-keys": [
+						{
+							"entity": "database://mysql8-184b34faa0c-378a10255b7fe9c1/org.jkiss.dbeaver.ext.mysql.model.MySQLCatalog/sample/org.jkiss.dbeaver.ext.mysql.model.MySQLTable/alumno",
+							"constraint": "alumno_VK",
+							"attributes": {
+								"Cod_CarreraPK": "Cod_CarreraFK"
+							}
+						}
+					]
+				}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
