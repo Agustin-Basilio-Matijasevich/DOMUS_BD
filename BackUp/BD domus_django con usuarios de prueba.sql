@@ -387,7 +387,7 @@ CREATE TABLE `django_admin_log` (
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_usuario_id` FOREIGN KEY (`user_id`) REFERENCES `usuario` (`id`),
   CONSTRAINT `django_admin_log_chk_1` CHECK ((`action_flag` >= 0))
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -396,7 +396,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (2,'2022-11-28 00:19:25.258781','2','admin',2,'[{\"changed\": {\"fields\": [\"Password\"]}}]',6,2),(3,'2022-11-28 00:23:31.987948','2','admin',2,'[{\"changed\": {\"fields\": [\"Sexo\"]}}]',6,2),(4,'2022-11-28 00:38:44.281340','2','admin',2,'[{\"changed\": {\"fields\": [\"Email\", \"Apellidos\", \"Salario mensual\", \"Departamento\"]}}]',6,2),(5,'2022-11-28 02:53:42.038523','3','secretario',1,'[{\"added\": {}}]',6,2),(6,'2022-11-28 02:55:27.513564','4','agenteinmobiliario',1,'[{\"added\": {}}]',6,2),(7,'2022-11-28 02:56:46.844785','5','cliente',1,'[{\"added\": {}}]',6,2),(8,'2022-11-28 05:36:24.362982','5','cliente',2,'[{\"changed\": {\"fields\": [\"Password\"]}}]',6,2);
+INSERT INTO `django_admin_log` VALUES (2,'2022-11-28 00:19:25.258781','2','admin',2,'[{\"changed\": {\"fields\": [\"Password\"]}}]',6,2),(3,'2022-11-28 00:23:31.987948','2','admin',2,'[{\"changed\": {\"fields\": [\"Sexo\"]}}]',6,2),(4,'2022-11-28 00:38:44.281340','2','admin',2,'[{\"changed\": {\"fields\": [\"Email\", \"Apellidos\", \"Salario mensual\", \"Departamento\"]}}]',6,2),(5,'2022-11-28 02:53:42.038523','3','secretario',1,'[{\"added\": {}}]',6,2),(6,'2022-11-28 02:55:27.513564','4','agenteinmobiliario',1,'[{\"added\": {}}]',6,2),(7,'2022-11-28 02:56:46.844785','5','cliente',1,'[{\"added\": {}}]',6,2),(8,'2022-11-28 05:36:24.362982','5','cliente',2,'[{\"changed\": {\"fields\": [\"Password\"]}}]',6,2),(9,'2022-11-28 23:21:22.727516','6','cliente2',1,'[{\"added\": {}}]',6,2);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -474,7 +474,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('jukw6qagjt2wpn52fsgmfqwqzwu92qc6','.eJxVjEEOwiAQRe_C2hCkHWBcuu8ZyAwMUjVtUtqV8e7apAvd_vfef6lI21rj1mSJY1YXBer0uzGlh0w7yHeabrNO87QuI-td0QdtepizPK-H-3dQqdVvbSyVfHZomD0LIJBNCfuuJPHY2YAWA4PLYpyzEFK2xIAFPAgBY6_eH-q9N-8:1ozWp5:cnLDFDr8DGws4prWu3QztyGZx5AQBTJikMVSRierG44','2022-12-12 05:36:55.866926');
+INSERT INTO `django_session` VALUES ('o2uvsib4lje0te7mp3h5lm7o0hev6ba4','.eJxVjMsOwiAQRf-FtSE8C7h07zcQYGakaiAp7cr479qkC93ec859sZi2tcZt4BJnYGem2Ol3y6k8sO0A7qndOi-9rcuc-a7wgw5-7YDPy-H-HdQ06rcuImjhciDhDGVJRKqAVkDeegcYRDEWPXrtTRbOTlLJZPQks5UWBQF7fwDnDzep:1ozkd1:rk5hdprbgyW_LgbImsQNAeknNgZP7Q4AVDzkgtCeQFs','2022-12-12 20:21:23.206332'),('wvnp95p7a1omnxp15z1fbiz3ddk5rm4e','.eJxVjDsOwjAQRO_iGllZ_2JT0ucMlne94ABypDipEHcHSymgnHlv5iVi2rcS98ZrnLM4Cy1Ovx0menDtIN9TvS2SlrqtM8quyIM2OS2Zn5fD_TsoqZXv2ivraMgmIFydBp0GS6MyxAgag8XgFAQP5A37MRvS6G1PwZJiUCDeH8OMNuQ:1ozfDb:dSb4HFxaEvRZz1Dvvt8WpTtBYk26poveFwJDTLSmKeM','2022-12-12 14:34:47.033795');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -790,7 +790,7 @@ CREATE TABLE `usuario` (
   `is_staff` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -799,7 +799,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (2,'pbkdf2_sha256$260000$d34tTEMhVLuqgvbDSzELJT$ok2RsTwzal53L8Fi1RpvvM/KC8zCZzBtoZ+ug74/mUc=','2022-11-28 05:35:53.187158',1,'admin','43146475','agustinbasiliomatijasevich@gmail.com','Agustin','Basilio Matijasevich','M',700000,'ADM','/9j/4AAQSkZJRgABAQAAAQABAAD/4gIoSUNDX1BST0ZJTEUAAQEAAAIYAAAAAAIQAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAHRyWFlaAAABZAA','EAS',1),(3,'pbkdf2_sha256$390000$pmGp0QRprqZ3U8wKXkA83d$Ou7jQRSAeL8ap6wwsvWrE+mPqZFrpWxcE8AJhInQLMw=','2022-11-28 04:02:23.443608',0,'secretario','41365753',NULL,'Alex','Lopez Frutos','M',500000,'COM','','ES',1),(4,'pbkdf2_sha256$390000$OHstqKYsBZE6u69hO1zrvJ$Tcm20h8DHmdpYJXDKmnFk9FliNWtXfCqseQCCSKXZ/M=','2022-11-28 04:01:43.928966',0,'agenteinmobiliario','42365987',NULL,'Claudio',NULL,'M',600000,'COM','','EAI',1),(5,'pbkdf2_sha256$260000$Rv0bmjY9JgWlb9rkf20fsw$r/aYQFZ7lHbKMzWRhDKiqh2PzKVYDaEsQNuWBegLycc=','2022-11-28 05:36:55.813705',0,'cliente','12345678',NULL,'CocaCola',NULL,'NE',NULL,NULL,'','CC',0);
+INSERT INTO `usuario` VALUES (2,'pbkdf2_sha256$390000$WkMzhnuMlOhWtMNz07abMY$f/Rvo3a0h595OXvZ+9RQSkR6AfBJ/b1XS23DM0H+PP0=','2022-11-28 23:20:26.683228',1,'admin','43146475','agustinbasiliomatijasevich@gmail.com','Agustin','Basilio Matijasevich','M',700000,'ADM','/9j/4AAQSkZJRgABAQAAAQABAAD/4gIoSUNDX1BST0ZJTEUAAQEAAAIYAAAAAAIQAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAHRyWFlaAAABZAA','EAS',1),(3,'pbkdf2_sha256$390000$mhI3OEJehMUemIorM4uB0A$PxfqB3RprlssIxEROgD3OBJ1F/EH84sVfSN5qoqT/w0=','2022-11-28 20:20:40.703221',0,'secretario','41365753',NULL,'Alex','Lopez Frutos','M',500000,'COM','','ES',1),(4,'pbkdf2_sha256$260000$VBKWU32TiPv0k5zEgZFeCi$yyIyiI/YTQStLJwXpEtRWQ0tkbTAdK8im+2dmI8k18M=','2022-11-28 14:34:18.842910',0,'agenteinmobiliario','42365987',NULL,'Claudio',NULL,'M',600000,'COM','','EAI',1),(5,'pbkdf2_sha256$260000$Rv0bmjY9JgWlb9rkf20fsw$r/aYQFZ7lHbKMzWRhDKiqh2PzKVYDaEsQNuWBegLycc=','2022-11-28 05:36:55.813705',0,'cliente','12345678',NULL,'CocaCola',NULL,'NE',NULL,NULL,'','CC',0),(6,'pbkdf2_sha256$390000$VAi07N1Gvhx3IKwZHuCY1A$t/tIA+Pex7iCTV+i8G0pKiclMj1MfnHBQXQzWRV3/Ns=',NULL,0,'cliente2','25654987',NULL,'Otro Cliente',NULL,'NE',NULL,NULL,'','CP',0);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -872,4 +872,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-28  2:44:10
+-- Dump completed on 2022-11-28 20:23:44
