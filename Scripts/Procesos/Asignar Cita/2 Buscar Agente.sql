@@ -1,5 +1,5 @@
 # Elegir Cita
-set @CITA = 1;
+set @CITA = 4;
 
 # Busco ubicacion de propiedad
 select p.Nombre_Ciudad_Propiedad, p.Nombre_Provincia_Propiedad, p.Nombre_Pais_Propiedad into @CIUDAD, @PROVINCIA, @PAIS 
