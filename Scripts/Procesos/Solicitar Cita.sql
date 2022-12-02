@@ -1,8 +1,8 @@
 # Eligir Cliente que solicita
-set @CLIENTE = 5;
+set @CLIENTE = 4;
 
 # Elegir la propiedad a visitar
-set @PROP = 6;
+set @PROP = 5;
 
 INSERT INTO cita
 (F_Creacion_Cita, H_Creacion_Cita, Client_Solicita_Cita, Propiedad_Involucrada, Tipo_Cita)
