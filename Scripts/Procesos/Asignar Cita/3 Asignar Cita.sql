@@ -1,5 +1,5 @@
 # Elija la cita
-set @CITA = 4;
+set @CITA = 13;
 
 # Elija a quien asigna la cita
 set @AGENTE = 2;
@@ -8,7 +8,7 @@ set @AGENTE = 2;
 set @SECRE = 3;
 
 # Elija Fecha y Hora a la que programa la cita
-set @FECHA = '2022-12-5';
+set @FECHA = '2022-12-3';
 set @HORA = '08:00:00';
 
 # Asigna la cita
