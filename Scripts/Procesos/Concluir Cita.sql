@@ -1,5 +1,5 @@
 # Elegir la cita
-set @CITA = 2;
+set @CITA = 13;
 
 UPDATE cita
 SET F_Concluye_Cita=curdate(), H_Concluye_Cita=curtime() 
