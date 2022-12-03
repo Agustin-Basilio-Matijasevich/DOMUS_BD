@@ -100,6 +100,7 @@ CREATE TABLE Propiedad (
 	Direccion varchar(100) NOT NULL,
 	Estado_Propiedad ENUM ('Venta','Alquiler') NOT NULL,
 	CONSTRAINT Propiedad_pk PRIMARY KEY (ID_Propiedad),
+	UNIQUE KEY 'Unica_Direccion' ('Direccion','Nombre_Ciudad_Propiedad','Nombre_Provincia_Propiedad','Nombre_Pais_Propiedad'),
 	CONSTRAINT UbicadaEnCiudad_FK FOREIGN KEY (Nombre_Ciudad_Propiedad,Nombre_Provincia_Propiedad,Nombre_Pais_Propiedad) REFERENCES domus.ciudad(Nombre_Ciudad,Nombre_Provincia_Ciudad,Nombre_Pais_Ciudad) ON DELETE RESTRICT ON UPDATE RESTRICT,
 	CONSTRAINT Dueño_FK FOREIGN KEY (ID_Dueño) REFERENCES domus.usuario(ID_Usuario) ON DELETE RESTRICT ON UPDATE CASCADE,
 	CONSTRAINT Locatario_FK FOREIGN KEY (ID_Adquiere_o_Alquila) REFERENCES domus.usuario(ID_Usuario) ON DELETE RESTRICT ON UPDATE CASCADE
@@ -298,3 +299,43 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_0900_ai_ci
 COMMENT='Dinero que los clientes deben venir a cobrar de alquileres o ventas'
 AUTO_INCREMENT=1;
+
+CREATE TABLE `registro_de_citas` (
+  `ID_Registro` int unsigned NOT NULL AUTO_INCREMENT,
+  `NRO_Cita` int unsigned NOT NULL,
+  `Fechas=>` varchar(8) NOT NULL DEFAULT 'Fechas=>',
+  `FH_Creacion` datetime NOT NULL,
+  `FH_Asignacion` datetime NOT NULL,
+  `FH_Cita` datetime NOT NULL,
+  `FH_Conclusion` datetime NOT NULL,
+  `Secretaria=>` varchar(12) NOT NULL DEFAULT 'Secretaria=>',
+  `Nombre_Secretaria` varchar(50) NOT NULL,
+  `Apellido_Secretaria` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `DNI_Secretaria` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Sexo_Secretaria` enum('Masculino','Femenino','No Especifica') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Agente Inmobiliatio=>` varchar(21) NOT NULL DEFAULT 'Agente Inmobiliatio=>',
+  `Nombre_AI` varchar(50) NOT NULL,
+  `Apellido_AI` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `DNI_AI` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Sexo_AI` enum('Masculino','Femenino','No Especifica') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Cliente=>` varchar(9) NOT NULL DEFAULT 'Cliente=>',
+  `Nombre_Cliente` varchar(50) NOT NULL,
+  `Apellido_Cliente` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `DNI_Cliente` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Sexo_Cliente` enum('Masculino','Femenino','No Especifica') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Propiedad=>` varchar(11) NOT NULL DEFAULT 'Propiedad=>',
+  `Ciudad_Prop` varchar(20) NOT NULL,
+  `Provincia_Prop` varchar(20) NOT NULL,
+  `Pais_Prop` varchar(20) NOT NULL,
+  `Direccion_Prop` varchar(100) NOT NULL,
+  `Tipo_Prop` enum('Casa','Departamento','Galpon','Campo','Terreno') NOT NULL,
+  `Pisos_Prop` int unsigned NOT NULL,
+  `Metros_Cuadrados_Prop` decimal(10,0) NOT NULL,
+  `Estado_Prop` enum('Venta','Alquiler') NOT NULL,
+  `Dueño=>` varchar(7) NOT NULL DEFAULT 'Dueño=>',
+  `Nombre_Dueño` varchar(50) NOT NULL,
+  `Apellido_Dueño` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `DNI_Dueño` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Sexo_Dueño` enum('Masculino','Femenino','No Especifica') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  PRIMARY KEY (`ID_Registro`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Registros de Citas Atendidas. Este registro guarda la informacion sin uso de claves foraneas por lo que es independiente de la eliminacion de usuarios y propiedades.'; 
