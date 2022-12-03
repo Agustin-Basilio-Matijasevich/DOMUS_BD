@@ -53,22 +53,29 @@
 			<entity id="17" name="provincia" fq-name="domus.provincia">
 				<path name="domus"/>
 			</entity>
-			<entity id="18" name="transaccion" fq-name="domus.transaccion">
+			<entity id="18" name="registro_de_citas" fq-name="domus.registro_de_citas">
 				<path name="domus"/>
 			</entity>
-			<entity id="19" name="transaccion_ruta_documento" fq-name="domus.transaccion_ruta_documento">
+			<entity id="19" name="transaccion" fq-name="domus.transaccion">
 				<path name="domus"/>
 			</entity>
-			<entity id="20" name="usuario" fq-name="domus.usuario">
+			<entity id="20" name="transaccion_ruta_documento" fq-name="domus.transaccion_ruta_documento">
+				<path name="domus"/>
+			</entity>
+			<entity id="21" name="usuario" fq-name="domus.usuario">
+				<path name="domus"/>
+			</entity>
+			<entity id="22" name="ai_atiende_ciudad" fq-name="domus.ai_atiende_ciudad">
 				<path name="domus"/>
 			</entity>
 		</data-source>
 	</entities>
 	<relations>
 		<relation name="Cierre_Diario_Caja_FK" fq-name="domus.cierre_caja.Cierre_Diario_Caja_FK" type="fk" pk-ref="2" fk-ref="3"/>
-		<relation name="Fue_con_Caja_FK" fq-name="domus.transaccion.Fue_con_Caja_FK" type="fk" pk-ref="2" fk-ref="18"/>
+		<relation name="Fue_con_Caja_FK" fq-name="domus.transaccion.Fue_con_Caja_FK" type="fk" pk-ref="2" fk-ref="19"/>
 		<relation name="AI_Atiende_Ciudad_FK" fq-name="domus.ai_atiende_ciudad.AI_Atiende_Ciudad_FK" type="fk" pk-ref="5" fk-ref="1"/>
 		<relation name="UbicadaEnCiudad_FK" fq-name="domus.propiedad.UbicadaEnCiudad_FK" type="fk" pk-ref="5" fk-ref="14"/>
+		<relation name="AI_Atiende_Ciudad_FK" fq-name="domus.ai_atiende_ciudad.AI_Atiende_Ciudad_FK" type="fk" pk-ref="5" fk-ref="22"/>
 		<relation name="Contrato_Ruta_Documento_FK" fq-name="domus.contrato_ruta_documento.Contrato_Ruta_Documento_FK" type="fk" pk-ref="7" fk-ref="8"/>
 		<relation name="Pais_Habla_Idioma_FK" fq-name="domus.pais_habla_idioma.Pais_Habla_Idioma_FK" type="fk" pk-ref="11" fk-ref="13"/>
 		<relation name="Pais_Habla_Idioma_FK_1" fq-name="domus.pais_habla_idioma.Pais_Habla_Idioma_FK_1" type="fk" pk-ref="12" fk-ref="13"/>
@@ -79,22 +86,23 @@
 		<relation name="Deuda_Cliente_FK_1" fq-name="domus.deuda_cliente.Deuda_Cliente_FK_1" type="fk" pk-ref="14" fk-ref="9"/>
 		<relation name="Propiedad_Ruta_Documento_FK" fq-name="domus.propiedad_ruta_documento.Propiedad_Ruta_Documento_FK" type="fk" pk-ref="14" fk-ref="15"/>
 		<relation name="Propiedad_Ruta_Imagen_FK" fq-name="domus.propiedad_ruta_imagen.Propiedad_Ruta_Imagen_FK" type="fk" pk-ref="14" fk-ref="16"/>
-		<relation name="Incluye_Propiedad_FK" fq-name="domus.transaccion.Incluye_Propiedad_FK" type="fk" pk-ref="14" fk-ref="18"/>
+		<relation name="Incluye_Propiedad_FK" fq-name="domus.transaccion.Incluye_Propiedad_FK" type="fk" pk-ref="14" fk-ref="19"/>
 		<relation name="Ciudad_FK" fq-name="domus.ciudad.Ciudad_FK" type="fk" pk-ref="17" fk-ref="5"/>
-		<relation name="Transaccion_Ruta_Documento_FK" fq-name="domus.transaccion_ruta_documento.Transaccion_Ruta_Documento_FK" type="fk" pk-ref="18" fk-ref="19"/>
-		<relation name="AI_Atiende_Ciudad_FK_1" fq-name="domus.ai_atiende_ciudad.AI_Atiende_Ciudad_FK_1" type="fk" pk-ref="20" fk-ref="1"/>
-		<relation name="AI-Atiende_FK" fq-name="domus.cita.`AI-Atiende_FK`" type="fk" pk-ref="20" fk-ref="4"/>
-		<relation name="Clien-Solicita_FK" fq-name="domus.cita.`Clien-Solicita_FK`" type="fk" pk-ref="20" fk-ref="4"/>
-		<relation name="Secre-Asigna_FK" fq-name="domus.cita.`Secre-Asigna_FK`" type="fk" pk-ref="20" fk-ref="4"/>
-		<relation name="Cobro_Pend_Cliente_FK" fq-name="domus.cobro_pend_cliente.Cobro_Pend_Cliente_FK" type="fk" pk-ref="20" fk-ref="6"/>
-		<relation name="Cliente_ContratoFK" fq-name="domus.contrato_cerrado.Cliente_ContratoFK" type="fk" pk-ref="20" fk-ref="7"/>
-		<relation name="Responsable_ContratoFK" fq-name="domus.contrato_cerrado.Responsable_ContratoFK" type="fk" pk-ref="20" fk-ref="7"/>
-		<relation name="Deuda_Cliente_FK" fq-name="domus.deuda_cliente.Deuda_Cliente_FK" type="fk" pk-ref="20" fk-ref="9"/>
-		<relation name="Empleado_Cobro_Pendiente_FK" fq-name="domus.empleado_cobro_pendiente.Empleado_Cobro_Pendiente_FK" type="fk" pk-ref="20" fk-ref="10"/>
-		<relation name="Dueño_FK" fq-name="domus.propiedad.Dueño_FK" type="fk" pk-ref="20" fk-ref="14"/>
-		<relation name="Locatario_FK" fq-name="domus.propiedad.Locatario_FK" type="fk" pk-ref="20" fk-ref="14"/>
-		<relation name="Cobro_Cajera_FK" fq-name="domus.transaccion.Cobro_Cajera_FK" type="fk" pk-ref="20" fk-ref="18"/>
-		<relation name="Incluye_Cliente_FK" fq-name="domus.transaccion.Incluye_Cliente_FK" type="fk" pk-ref="20" fk-ref="18"/>
-		<relation name="Se_Pago_Empleado_FK" fq-name="domus.transaccion.Se_Pago_Empleado_FK" type="fk" pk-ref="20" fk-ref="18"/>
+		<relation name="Transaccion_Ruta_Documento_FK" fq-name="domus.transaccion_ruta_documento.Transaccion_Ruta_Documento_FK" type="fk" pk-ref="19" fk-ref="20"/>
+		<relation name="AI_Atiende_Ciudad_FK_1" fq-name="domus.ai_atiende_ciudad.AI_Atiende_Ciudad_FK_1" type="fk" pk-ref="21" fk-ref="1"/>
+		<relation name="AI-Atiende_FK" fq-name="domus.cita.`AI-Atiende_FK`" type="fk" pk-ref="21" fk-ref="4"/>
+		<relation name="Clien-Solicita_FK" fq-name="domus.cita.`Clien-Solicita_FK`" type="fk" pk-ref="21" fk-ref="4"/>
+		<relation name="Secre-Asigna_FK" fq-name="domus.cita.`Secre-Asigna_FK`" type="fk" pk-ref="21" fk-ref="4"/>
+		<relation name="Cobro_Pend_Cliente_FK" fq-name="domus.cobro_pend_cliente.Cobro_Pend_Cliente_FK" type="fk" pk-ref="21" fk-ref="6"/>
+		<relation name="Cliente_ContratoFK" fq-name="domus.contrato_cerrado.Cliente_ContratoFK" type="fk" pk-ref="21" fk-ref="7"/>
+		<relation name="Responsable_ContratoFK" fq-name="domus.contrato_cerrado.Responsable_ContratoFK" type="fk" pk-ref="21" fk-ref="7"/>
+		<relation name="Deuda_Cliente_FK" fq-name="domus.deuda_cliente.Deuda_Cliente_FK" type="fk" pk-ref="21" fk-ref="9"/>
+		<relation name="Empleado_Cobro_Pendiente_FK" fq-name="domus.empleado_cobro_pendiente.Empleado_Cobro_Pendiente_FK" type="fk" pk-ref="21" fk-ref="10"/>
+		<relation name="Dueño_FK" fq-name="domus.propiedad.Dueño_FK" type="fk" pk-ref="21" fk-ref="14"/>
+		<relation name="Locatario_FK" fq-name="domus.propiedad.Locatario_FK" type="fk" pk-ref="21" fk-ref="14"/>
+		<relation name="Cobro_Cajera_FK" fq-name="domus.transaccion.Cobro_Cajera_FK" type="fk" pk-ref="21" fk-ref="19"/>
+		<relation name="Incluye_Cliente_FK" fq-name="domus.transaccion.Incluye_Cliente_FK" type="fk" pk-ref="21" fk-ref="19"/>
+		<relation name="Se_Pago_Empleado_FK" fq-name="domus.transaccion.Se_Pago_Empleado_FK" type="fk" pk-ref="21" fk-ref="19"/>
+		<relation name="AI_Atiende_Ciudad_FK_1" fq-name="domus.ai_atiende_ciudad.AI_Atiende_Ciudad_FK_1" type="fk" pk-ref="21" fk-ref="22"/>
 	</relations>
 </diagram>
