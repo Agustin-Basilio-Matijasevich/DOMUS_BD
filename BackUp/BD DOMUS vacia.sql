@@ -46,7 +46,7 @@ CREATE TABLE `caja` (
   `Descripcion_Caja` varchar(100) NOT NULL,
   `IsOpen` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`ID_Caja`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Cajas de la Empresa (Dinero)';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Cajas de la Empresa (Dinero)';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,8 +96,82 @@ CREATE TABLE `cita` (
   CONSTRAINT `Clien-Solicita_FK` FOREIGN KEY (`Client_Solicita_Cita`) REFERENCES `usuario` (`ID_Usuario`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `Prop-Involuc_FK` FOREIGN KEY (`Propiedad_Involucrada`) REFERENCES `propiedad` (`ID_Propiedad`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `Secre-Asigna_FK` FOREIGN KEY (`Secre_Asigna_Cita`) REFERENCES `usuario` (`ID_Usuario`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Citas de Clientes con Agentes Inmobiliarios';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Citas de Clientes con Agentes Inmobiliarios';
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 */ /*!50003 TRIGGER `Registrar_Cita_Concluida` AFTER UPDATE ON `cita` FOR EACH ROW begin 
+	if (new.F_Concluye_Cita is not NULL or new.H_Concluye_Cita is not NULL) then 
+		INSERT INTO registro_de_citas 
+		(NRO_Cita, 
+		`Fechas=>`, FH_Creacion, FH_Asignacion, FH_Cita, FH_Conclusion, 
+		`Secretaria=>`, Nombre_Secretaria, Apellido_Secretaria, DNI_Secretaria, Sexo_Secretaria, 
+		`Agente Inmobiliatio=>`, Nombre_AI, Apellido_AI, DNI_AI, Sexo_AI, 
+		`Cliente=>`, Nombre_Cliente, Apellido_Cliente, DNI_Cliente, Sexo_Cliente, 
+		`Propiedad=>`, Ciudad_Prop, Provincia_Prop, Pais_Prop, Direccion_Prop, Tipo_Prop, Pisos_Prop, Metros_Cuadrados_Prop, Estado_Prop, 
+		`Dueño=>`, Nombre_Dueño, Apellido_Dueño, DNI_Dueño, Sexo_Dueño)
+		select 
+		new.NRO_Cita,
+		'Fechas=>', 
+		cast(concat(c.F_Creacion_Cita, ' ', c.H_Creacion_Cita) as datetime) as FH_Creacion, 
+		cast(concat(c.F_Asignacion_Cita, ' ', c.H_Asignacion_Cita) as datetime) as FH_Asignacion, 
+		cast(concat(c.F_Cita, ' ', c.H_Cita) as datetime) as FH_Cita, 
+		cast(concat(c.F_Concluye_Cita, ' ', c.H_Concluye_Cita) as datetime) as FH_Conclusion, 
+		'Secretaria=>', 
+		u.Nombres as Nombre_Secretaria,
+		u.Apellidos as Apellido_Secretaria,
+		u.DNI_CUIL as DNI_Secretaria,
+		u.Sexo as Sexo_Secretaria,
+		'Agente Inmobiliatio=>', 
+		u2.Nombres as Nombre_AI,
+		u2.Apellidos as Apellido_AI,
+		u2.DNI_CUIL as DNI_AI,
+		u2.Sexo as Sexo_AI,
+		'Cliente=>', 
+		u3.Nombres as Nombre_Cliente,
+		u3.Apellidos as Apellido_Cliente,
+		u3.DNI_CUIL as DNI_Cliente,
+		u3.Sexo as Sexo_Cliente,
+		'Propiedad=>', 
+		p.Nombre_Ciudad_Propiedad as Ciudad_Prop, 
+		p.Nombre_Provincia_Propiedad as Provincia_Prop, 
+		p.Nombre_Pais_Propiedad as Pais_Prop, 
+		p.Direccion as Direccion_Prop, 
+		p.Tipo_Propiedad as Tipo_Prop, 
+		p.Pisos as Pisos_Prop, 
+		p.Metros_Cuadrados as Metros_Cuadrados_Prop, 
+		p.Estado_Propiedad as Estado_Prop, 
+		'Dueño=>', 
+		u4.Nombres as Nombre_Dueño, 
+		u4.Apellidos as Apellido_Dueño, 
+		u4.DNI_CUIL as DNI_Dueño, 
+		u4.Sexo as Sexo_Dueño 
+		from cita c 
+		inner join usuario u 
+		on c.Secre_Asigna_Cita = u.ID_Usuario 
+		inner join usuario u2 
+		on c.AI_Atiende_Cita = u2.ID_Usuario 
+		inner join usuario u3 
+		on c.Client_Solicita_Cita = u3.ID_Usuario 
+		inner join propiedad p 
+		on c.Propiedad_Involucrada = p.ID_Propiedad 
+		inner join usuario u4 
+		on p.ID_Dueño = u4.ID_Usuario 
+		where NRO_Cita = new.NRO_Cita; 
+	end if; 
+end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `ciudad`
@@ -282,14 +356,16 @@ CREATE TABLE `propiedad` (
   `Metros_Cuadrados` decimal(10,0) NOT NULL,
   `Direccion` varchar(100) NOT NULL,
   `Estado_Propiedad` enum('Venta','Alquiler') NOT NULL,
+  `Precio_Sugerido` decimal(10,0) NOT NULL,
   PRIMARY KEY (`ID_Propiedad`),
+  UNIQUE KEY `Unica_Direccion` (`Direccion`,`Nombre_Ciudad_Propiedad`,`Nombre_Provincia_Propiedad`,`Nombre_Pais_Propiedad`),
   KEY `UbicadaEnCiudad_FK` (`Nombre_Ciudad_Propiedad`,`Nombre_Provincia_Propiedad`,`Nombre_Pais_Propiedad`),
   KEY `Dueño_FK` (`ID_Dueño`),
   KEY `Locatario_FK` (`ID_Adquiere_o_Alquila`),
   CONSTRAINT `Dueño_FK` FOREIGN KEY (`ID_Dueño`) REFERENCES `usuario` (`ID_Usuario`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `Locatario_FK` FOREIGN KEY (`ID_Adquiere_o_Alquila`) REFERENCES `usuario` (`ID_Usuario`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `UbicadaEnCiudad_FK` FOREIGN KEY (`Nombre_Ciudad_Propiedad`, `Nombre_Provincia_Propiedad`, `Nombre_Pais_Propiedad`) REFERENCES `ciudad` (`Nombre_Ciudad`, `Nombre_Provincia_Ciudad`, `Nombre_Pais_Ciudad`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Propiedades Administradas por la Empresa';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Propiedades Administradas por la Empresa';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -336,6 +412,54 @@ CREATE TABLE `provincia` (
   KEY `Provincia_FK` (`Nombre_Pais_Provincia`),
   CONSTRAINT `Provincia_FK` FOREIGN KEY (`Nombre_Pais_Provincia`) REFERENCES `pais` (`Nombre_Pais`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Provincias de un Pais';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `registro_de_citas`
+--
+
+DROP TABLE IF EXISTS `registro_de_citas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `registro_de_citas` (
+  `ID_Registro` int unsigned NOT NULL AUTO_INCREMENT,
+  `NRO_Cita` int unsigned NOT NULL,
+  `Fechas=>` varchar(8) NOT NULL DEFAULT 'Fechas=>',
+  `FH_Creacion` datetime NOT NULL,
+  `FH_Asignacion` datetime NOT NULL,
+  `FH_Cita` datetime NOT NULL,
+  `FH_Conclusion` datetime NOT NULL,
+  `Secretaria=>` varchar(12) NOT NULL DEFAULT 'Secretaria=>',
+  `Nombre_Secretaria` varchar(50) NOT NULL,
+  `Apellido_Secretaria` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `DNI_Secretaria` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Sexo_Secretaria` enum('Masculino','Femenino','No Especifica') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Agente Inmobiliatio=>` varchar(21) NOT NULL DEFAULT 'Agente Inmobiliatio=>',
+  `Nombre_AI` varchar(50) NOT NULL,
+  `Apellido_AI` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `DNI_AI` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Sexo_AI` enum('Masculino','Femenino','No Especifica') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Cliente=>` varchar(9) NOT NULL DEFAULT 'Cliente=>',
+  `Nombre_Cliente` varchar(50) NOT NULL,
+  `Apellido_Cliente` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `DNI_Cliente` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Sexo_Cliente` enum('Masculino','Femenino','No Especifica') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `Propiedad=>` varchar(11) NOT NULL DEFAULT 'Propiedad=>',
+  `Ciudad_Prop` varchar(20) NOT NULL,
+  `Provincia_Prop` varchar(20) NOT NULL,
+  `Pais_Prop` varchar(20) NOT NULL,
+  `Direccion_Prop` varchar(100) NOT NULL,
+  `Tipo_Prop` enum('Casa','Departamento','Galpon','Campo','Terreno') NOT NULL,
+  `Pisos_Prop` int unsigned NOT NULL,
+  `Metros_Cuadrados_Prop` decimal(10,0) NOT NULL,
+  `Estado_Prop` enum('Venta','Alquiler') NOT NULL,
+  `Dueño=>` varchar(7) NOT NULL DEFAULT 'Dueño=>',
+  `Nombre_Dueño` varchar(50) NOT NULL,
+  `Apellido_Dueño` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `DNI_Dueño` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Sexo_Dueño` enum('Masculino','Femenino','No Especifica') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  PRIMARY KEY (`ID_Registro`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Registros de Citas Atendidas. Este registro guarda la informacion sin uso de claves foraneas por lo que es independiente de la eliminacion de usuarios y propiedades.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -395,7 +519,7 @@ DROP TABLE IF EXISTS `usuario`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuario` (
   `ID_Usuario` int unsigned NOT NULL AUTO_INCREMENT,
-  `DNI` int unsigned NOT NULL,
+  `DNI_CUIL` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Nombres` varchar(50) NOT NULL,
   `Apellidos` varchar(50) DEFAULT NULL,
   `Sexo` enum('Masculino','Femenino','No Especifica') DEFAULT NULL,
@@ -408,7 +532,7 @@ CREATE TABLE `usuario` (
   `password` blob NOT NULL,
   PRIMARY KEY (`ID_Usuario`),
   UNIQUE KEY `username_UK` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Usuarios del Sistema';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Usuarios del Sistema';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -424,4 +548,4 @@ CREATE TABLE `usuario` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-26  9:30:10
+-- Dump completed on 2022-12-03  2:00:07
