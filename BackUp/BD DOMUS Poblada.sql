@@ -35,6 +35,16 @@ CREATE TABLE `ai_atiende_ciudad` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `ai_atiende_ciudad`
+--
+
+LOCK TABLES `ai_atiende_ciudad` WRITE;
+/*!40000 ALTER TABLE `ai_atiende_ciudad` DISABLE KEYS */;
+INSERT INTO `ai_atiende_ciudad` VALUES ('Charata','Chaco','Argentina',2),('Resistencia','Chaco','Argentina',2),('Santa Fe','Santa Fe','Argentina',2);
+/*!40000 ALTER TABLE `ai_atiende_ciudad` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `caja`
 --
 
@@ -48,6 +58,16 @@ CREATE TABLE `caja` (
   PRIMARY KEY (`ID_Caja`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Cajas de la Empresa (Dinero)';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `caja`
+--
+
+LOCK TABLES `caja` WRITE;
+/*!40000 ALTER TABLE `caja` DISABLE KEYS */;
+INSERT INTO `caja` VALUES (1,'Sucursal Resistencia Av Italia 16',0x00),(2,'Sucursal Santa Fe Falucho 34',0x00);
+/*!40000 ALTER TABLE `caja` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `cierre_caja`
@@ -64,6 +84,16 @@ CREATE TABLE `cierre_caja` (
   CONSTRAINT `Cierre_Diario_Caja_FK` FOREIGN KEY (`ID_Caja_Cierre`) REFERENCES `caja` (`ID_Caja`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Registro de Cierre de Caja Diario';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cierre_caja`
+--
+
+LOCK TABLES `cierre_caja` WRITE;
+/*!40000 ALTER TABLE `cierre_caja` DISABLE KEYS */;
+INSERT INTO `cierre_caja` VALUES (1,'2022-11-25',5000),(2,'2022-11-25',5000);
+/*!40000 ALTER TABLE `cierre_caja` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `cita`
@@ -98,6 +128,16 @@ CREATE TABLE `cita` (
   CONSTRAINT `Secre-Asigna_FK` FOREIGN KEY (`Secre_Asigna_Cita`) REFERENCES `usuario` (`ID_Usuario`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Citas de Clientes con Agentes Inmobiliarios';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cita`
+--
+
+LOCK TABLES `cita` WRITE;
+/*!40000 ALTER TABLE `cita` DISABLE KEYS */;
+INSERT INTO `cita` VALUES (4,'2022-11-27','09:00:00','2022-12-01','16:50:32','2022-12-05','08:00:00',NULL,NULL,3,2,5,5,'Agendada'),(8,'2022-12-01','18:04:21',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,4,8,'Solicitud'),(11,'2022-12-01','18:09:42',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,6,'Solicitud'),(13,'2022-12-02','16:42:52','2022-12-02','16:44:23','2022-12-03','08:00:00','2022-12-03','01:53:11',3,2,4,5,'Agendada');
+/*!40000 ALTER TABLE `cita` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -191,6 +231,16 @@ CREATE TABLE `ciudad` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `ciudad`
+--
+
+LOCK TABLES `ciudad` WRITE;
+/*!40000 ALTER TABLE `ciudad` DISABLE KEYS */;
+INSERT INTO `ciudad` VALUES ('Barranqueras','Chaco','Argentina'),('Charata','Chaco','Argentina'),('Resistencia','Chaco','Argentina'),('Santa Fe','Santa Fe','Argentina');
+/*!40000 ALTER TABLE `ciudad` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `cobro_pend_cliente`
 --
 
@@ -210,6 +260,15 @@ CREATE TABLE `cobro_pend_cliente` (
   CONSTRAINT `Cobro_Pend_Cliente_FK_1` FOREIGN KEY (`ID_Prop_Involuc_CPC`) REFERENCES `propiedad` (`ID_Propiedad`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Dinero que los clientes deben venir a cobrar de alquileres o ventas';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cobro_pend_cliente`
+--
+
+LOCK TABLES `cobro_pend_cliente` WRITE;
+/*!40000 ALTER TABLE `cobro_pend_cliente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cobro_pend_cliente` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `contrato_cerrado`
@@ -238,6 +297,15 @@ CREATE TABLE `contrato_cerrado` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `contrato_cerrado`
+--
+
+LOCK TABLES `contrato_cerrado` WRITE;
+/*!40000 ALTER TABLE `contrato_cerrado` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contrato_cerrado` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `contrato_ruta_documento`
 --
 
@@ -251,6 +319,15 @@ CREATE TABLE `contrato_ruta_documento` (
   CONSTRAINT `Contrato_Ruta_Documento_FK` FOREIGN KEY (`NRO_Contrato_Documento`) REFERENCES `contrato_cerrado` (`NRO_Contrato`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Documentos afines al contrato';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contrato_ruta_documento`
+--
+
+LOCK TABLES `contrato_ruta_documento` WRITE;
+/*!40000 ALTER TABLE `contrato_ruta_documento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contrato_ruta_documento` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `deuda_cliente`
@@ -274,6 +351,15 @@ CREATE TABLE `deuda_cliente` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `deuda_cliente`
+--
+
+LOCK TABLES `deuda_cliente` WRITE;
+/*!40000 ALTER TABLE `deuda_cliente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `deuda_cliente` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `empleado_cobro_pendiente`
 --
 
@@ -295,6 +381,15 @@ CREATE TABLE `empleado_cobro_pendiente` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `empleado_cobro_pendiente`
+--
+
+LOCK TABLES `empleado_cobro_pendiente` WRITE;
+/*!40000 ALTER TABLE `empleado_cobro_pendiente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `empleado_cobro_pendiente` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `idioma`
 --
 
@@ -308,6 +403,16 @@ CREATE TABLE `idioma` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `idioma`
+--
+
+LOCK TABLES `idioma` WRITE;
+/*!40000 ALTER TABLE `idioma` DISABLE KEYS */;
+INSERT INTO `idioma` VALUES ('Español'),('Ingles'),('Portugues');
+/*!40000 ALTER TABLE `idioma` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `pais`
 --
 
@@ -319,6 +424,16 @@ CREATE TABLE `pais` (
   PRIMARY KEY (`Nombre_Pais`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Paises del Mundo';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pais`
+--
+
+LOCK TABLES `pais` WRITE;
+/*!40000 ALTER TABLE `pais` DISABLE KEYS */;
+INSERT INTO `pais` VALUES ('Argentina'),('Brasil'),('Estados Unidos');
+/*!40000 ALTER TABLE `pais` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `pais_habla_idioma`
@@ -336,6 +451,16 @@ CREATE TABLE `pais_habla_idioma` (
   CONSTRAINT `Pais_Habla_Idioma_FK_1` FOREIGN KEY (`Nombre_Pais_Pais`) REFERENCES `pais` (`Nombre_Pais`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Conexion entre Paises e Idiomas que se hablan en el mismo';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pais_habla_idioma`
+--
+
+LOCK TABLES `pais_habla_idioma` WRITE;
+/*!40000 ALTER TABLE `pais_habla_idioma` DISABLE KEYS */;
+INSERT INTO `pais_habla_idioma` VALUES ('Español','Argentina'),('Portugues','Brasil'),('Ingles','Estados Unidos');
+/*!40000 ALTER TABLE `pais_habla_idioma` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `propiedad`
@@ -369,6 +494,16 @@ CREATE TABLE `propiedad` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `propiedad`
+--
+
+LOCK TABLES `propiedad` WRITE;
+/*!40000 ALTER TABLE `propiedad` DISABLE KEYS */;
+INSERT INTO `propiedad` VALUES (1,4,NULL,'Resistencia','Chaco','Argentina','Casa',2,100,'Rodriguez Peña 619','Venta',30000000),(2,4,5,'Resistencia','Chaco','Argentina','Galpon',1,250,'Av Italia 16','Alquiler',45000),(4,5,4,'Santa Fe','Santa Fe','Argentina','Terreno',1,85,'Falucho 1084','Venta',25000000),(5,5,NULL,'Charata','Chaco','Argentina','Departamento',1,50,'Pringles 300','Alquiler',20000),(6,4,NULL,'Resistencia','Chaco','Argentina','Casa',1,150,'Cangallo 350','Venta',3500000),(8,5,NULL,'Barranqueras','Chaco','Argentina','Casa',1,150,'Cangallo 350','Venta',35000000);
+/*!40000 ALTER TABLE `propiedad` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `propiedad_ruta_documento`
 --
 
@@ -382,6 +517,15 @@ CREATE TABLE `propiedad_ruta_documento` (
   CONSTRAINT `Propiedad_Ruta_Documento_FK` FOREIGN KEY (`ID_Propiedad_Documento`) REFERENCES `propiedad` (`ID_Propiedad`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Rutas a documentos afines a la propiedad';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `propiedad_ruta_documento`
+--
+
+LOCK TABLES `propiedad_ruta_documento` WRITE;
+/*!40000 ALTER TABLE `propiedad_ruta_documento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `propiedad_ruta_documento` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `propiedad_ruta_imagen`
@@ -399,6 +543,15 @@ CREATE TABLE `propiedad_ruta_imagen` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `propiedad_ruta_imagen`
+--
+
+LOCK TABLES `propiedad_ruta_imagen` WRITE;
+/*!40000 ALTER TABLE `propiedad_ruta_imagen` DISABLE KEYS */;
+/*!40000 ALTER TABLE `propiedad_ruta_imagen` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `provincia`
 --
 
@@ -413,6 +566,16 @@ CREATE TABLE `provincia` (
   CONSTRAINT `Provincia_FK` FOREIGN KEY (`Nombre_Pais_Provincia`) REFERENCES `pais` (`Nombre_Pais`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Provincias de un Pais';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `provincia`
+--
+
+LOCK TABLES `provincia` WRITE;
+/*!40000 ALTER TABLE `provincia` DISABLE KEYS */;
+INSERT INTO `provincia` VALUES ('Chaco','Argentina'),('Santa Fe','Argentina');
+/*!40000 ALTER TABLE `provincia` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `registro_de_citas`
@@ -463,6 +626,16 @@ CREATE TABLE `registro_de_citas` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `registro_de_citas`
+--
+
+LOCK TABLES `registro_de_citas` WRITE;
+/*!40000 ALTER TABLE `registro_de_citas` DISABLE KEYS */;
+INSERT INTO `registro_de_citas` VALUES (1,13,'Fechas=>','2022-12-02 16:42:52','2022-12-02 16:44:23','2022-12-03 08:00:00','2022-12-03 01:53:11','Secretaria=>','Victoria','Tayara Marenco','43111000','Femenino','Agente Inmobiliatio=>','Alex','Lopez Frutos','42145478','Masculino','Cliente=>','Alexa','Gutierrez','42123720','No Especifica','Propiedad=>','Charata','Chaco','Argentina','Pringles 300','Departamento',1,50,'Alquiler','Dueño=>','Electronica del Nordeste',NULL,'20382206107',NULL);
+/*!40000 ALTER TABLE `registro_de_citas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `transaccion`
 --
 
@@ -496,6 +669,15 @@ CREATE TABLE `transaccion` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `transaccion`
+--
+
+LOCK TABLES `transaccion` WRITE;
+/*!40000 ALTER TABLE `transaccion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `transaccion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `transaccion_ruta_documento`
 --
 
@@ -509,6 +691,15 @@ CREATE TABLE `transaccion_ruta_documento` (
   CONSTRAINT `Transaccion_Ruta_Documento_FK` FOREIGN KEY (`NRO_Transaccion_Documento`) REFERENCES `transaccion` (`NRO_Transaccion`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Documentos afines a la Transaccion';
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transaccion_ruta_documento`
+--
+
+LOCK TABLES `transaccion_ruta_documento` WRITE;
+/*!40000 ALTER TABLE `transaccion_ruta_documento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `transaccion_ruta_documento` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `usuario`
@@ -536,6 +727,16 @@ CREATE TABLE `usuario` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'43146475','Agustin','Basilio Matijasevich','Masculino',700000,'Administracion',NULL,'Empleado_Administrador de Sistema','agustinbasiliomatijasevich@gmail.com','admin',0x61646D696E),(2,'42145478','Alex','Lopez Frutos','Masculino',700000,'Comercializacion',NULL,'Empleado_Agente Inmobiliario',NULL,'alex',0x31323334),(3,'43111000','Victoria','Tayara Marenco','Femenino',500000,'Comercializacion',NULL,'Empleado_Secretario',NULL,'vicki',0x31333537),(4,'42123720','Alexa','Gutierrez','No Especifica',NULL,NULL,NULL,'Cliente_Particular',NULL,'alexa',0x31323334),(5,'20382206107','Electronica del Nordeste',NULL,NULL,NULL,NULL,NULL,'Cliente_Corporativo','electronicadelnordeste@outlook.com','electro',0x3534333231);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping routines for database 'domus'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -548,4 +749,4 @@ CREATE TABLE `usuario` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-03  2:00:07
+-- Dump completed on 2022-12-05 10:15:07

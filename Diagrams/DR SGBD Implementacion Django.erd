@@ -74,30 +74,33 @@
 			<entity id="24" name="provincia" fq-name="domus_django.provincia">
 				<path name="domus_django"/>
 			</entity>
-			<entity id="25" name="transaccion" fq-name="domus_django.transaccion">
+			<entity id="25" name="registro_de_citas" fq-name="domus_django.registro_de_citas">
 				<path name="domus_django"/>
 			</entity>
-			<entity id="26" name="transaccion_ruta_documento" fq-name="domus_django.transaccion_ruta_documento">
+			<entity id="26" name="transaccion" fq-name="domus_django.transaccion">
 				<path name="domus_django"/>
 			</entity>
-			<entity id="27" name="usuario" fq-name="domus_django.usuario">
+			<entity id="27" name="transaccion_ruta_documento" fq-name="domus_django.transaccion_ruta_documento">
 				<path name="domus_django"/>
 			</entity>
-			<entity id="28" name="usuario_groups" fq-name="domus_django.usuario_groups">
+			<entity id="28" name="usuario" fq-name="domus_django.usuario">
 				<path name="domus_django"/>
 			</entity>
-			<entity id="29" name="usuario_user_permissions" fq-name="domus_django.usuario_user_permissions">
+			<entity id="29" name="usuario_groups" fq-name="domus_django.usuario_groups">
+				<path name="domus_django"/>
+			</entity>
+			<entity id="30" name="usuario_user_permissions" fq-name="domus_django.usuario_user_permissions">
 				<path name="domus_django"/>
 			</entity>
 		</data-source>
 	</entities>
 	<relations>
 		<relation name="auth_group_permissions_group_id_b120cbf9_fk_auth_group_id" fq-name="domus_django.auth_group_permissions.auth_group_permissions_group_id_b120cbf9_fk_auth_group_id" type="fk" pk-ref="2" fk-ref="3"/>
-		<relation name="usuario_groups_group_id_c67c8651_fk_auth_group_id" fq-name="domus_django.usuario_groups.usuario_groups_group_id_c67c8651_fk_auth_group_id" type="fk" pk-ref="2" fk-ref="28"/>
+		<relation name="usuario_groups_group_id_c67c8651_fk_auth_group_id" fq-name="domus_django.usuario_groups.usuario_groups_group_id_c67c8651_fk_auth_group_id" type="fk" pk-ref="2" fk-ref="29"/>
 		<relation name="auth_group_permissio_permission_id_84c5c92e_fk_auth_perm" fq-name="domus_django.auth_group_permissions.auth_group_permissio_permission_id_84c5c92e_fk_auth_perm" type="fk" pk-ref="4" fk-ref="3"/>
-		<relation name="usuario_user_permiss_permission_id_a8893ce7_fk_auth_perm" fq-name="domus_django.usuario_user_permissions.usuario_user_permiss_permission_id_a8893ce7_fk_auth_perm" type="fk" pk-ref="4" fk-ref="29"/>
+		<relation name="usuario_user_permiss_permission_id_a8893ce7_fk_auth_perm" fq-name="domus_django.usuario_user_permissions.usuario_user_permiss_permission_id_a8893ce7_fk_auth_perm" type="fk" pk-ref="4" fk-ref="30"/>
 		<relation name="cierre_caja_ID_Caja_Cierre_5b68d4d3_fk_caja_ID_Caja" fq-name="domus_django.cierre_caja.cierre_caja_ID_Caja_Cierre_5b68d4d3_fk_caja_ID_Caja" type="fk" pk-ref="5" fk-ref="6"/>
-		<relation name="transaccion_ID_Caja_Transaccion_b6856790_fk_caja_ID_Caja" fq-name="domus_django.transaccion.transaccion_ID_Caja_Transaccion_b6856790_fk_caja_ID_Caja" type="fk" pk-ref="5" fk-ref="25"/>
+		<relation name="transaccion_ID_Caja_Transaccion_b6856790_fk_caja_ID_Caja" fq-name="domus_django.transaccion.transaccion_ID_Caja_Transaccion_b6856790_fk_caja_ID_Caja" type="fk" pk-ref="5" fk-ref="26"/>
 		<relation name="ai_atiende_ciudad_ID_Ciudad_AIatiendeC_fed0326f_fk_ciudad_ID" fq-name="domus_django.ai_atiende_ciudad.ai_atiende_ciudad_ID_Ciudad_AIatiendeC_fed0326f_fk_ciudad_ID" type="fk" pk-ref="8" fk-ref="1"/>
 		<relation name="propiedad_ID_Ciudad_Propiedad_201f9214_fk_ciudad_ID_Ciudad" fq-name="domus_django.propiedad.propiedad_ID_Ciudad_Propiedad_201f9214_fk_ciudad_ID_Ciudad" type="fk" pk-ref="8" fk-ref="21"/>
 		<relation name="contrato_ruta_docume_NRO_Contrato_Documen_75e3f24a_fk_contrato_" fq-name="domus_django.contrato_ruta_documento.contrato_ruta_docume_NRO_Contrato_Documen_75e3f24a_fk_contrato_" type="fk" pk-ref="10" fk-ref="11"/>
@@ -112,25 +115,25 @@
 		<relation name="deuda_cliente_ID_Propiedad_Deuda_0ce67d0a_fk_propiedad" fq-name="domus_django.deuda_cliente.deuda_cliente_ID_Propiedad_Deuda_0ce67d0a_fk_propiedad" type="fk" pk-ref="21" fk-ref="12"/>
 		<relation name="propiedad_ruta_docum_ID_Propiedad_Documen_ed14ae46_fk_propiedad" fq-name="domus_django.propiedad_ruta_documento.propiedad_ruta_docum_ID_Propiedad_Documen_ed14ae46_fk_propiedad" type="fk" pk-ref="21" fk-ref="22"/>
 		<relation name="propiedad_ruta_image_ID_Propiedad_Imagen_2afe1b22_fk_propiedad" fq-name="domus_django.propiedad_ruta_imagen.propiedad_ruta_image_ID_Propiedad_Imagen_2afe1b22_fk_propiedad" type="fk" pk-ref="21" fk-ref="23"/>
-		<relation name="transaccion_Prop_Involucrada_Tra_0830bd9c_fk_propiedad" fq-name="domus_django.transaccion.transaccion_Prop_Involucrada_Tra_0830bd9c_fk_propiedad" type="fk" pk-ref="21" fk-ref="25"/>
+		<relation name="transaccion_Prop_Involucrada_Tra_0830bd9c_fk_propiedad" fq-name="domus_django.transaccion.transaccion_Prop_Involucrada_Tra_0830bd9c_fk_propiedad" type="fk" pk-ref="21" fk-ref="26"/>
 		<relation name="ciudad_ID_Provincia_Ciudad_d792a96f_fk_provincia_ID_Provincia" fq-name="domus_django.ciudad.ciudad_ID_Provincia_Ciudad_d792a96f_fk_provincia_ID_Provincia" type="fk" pk-ref="24" fk-ref="8"/>
-		<relation name="transaccion_ruta_doc_NRO_Transaccion_Docu_212dea1a_fk_transacci" fq-name="domus_django.transaccion_ruta_documento.transaccion_ruta_doc_NRO_Transaccion_Docu_212dea1a_fk_transacci" type="fk" pk-ref="25" fk-ref="26"/>
-		<relation name="ai_atiende_ciudad_ID_AI_1c9bb9fe_fk_usuario_id" fq-name="domus_django.ai_atiende_ciudad.ai_atiende_ciudad_ID_AI_1c9bb9fe_fk_usuario_id" type="fk" pk-ref="27" fk-ref="1"/>
-		<relation name="cita_AI_Atiende_Cita_0d4b7743_fk_usuario_id" fq-name="domus_django.cita.cita_AI_Atiende_Cita_0d4b7743_fk_usuario_id" type="fk" pk-ref="27" fk-ref="7"/>
-		<relation name="cita_Client_Solicita_Cita_6a8f8471_fk_usuario_id" fq-name="domus_django.cita.cita_Client_Solicita_Cita_6a8f8471_fk_usuario_id" type="fk" pk-ref="27" fk-ref="7"/>
-		<relation name="cita_Secre_Asigna_Cita_822a9594_fk_usuario_id" fq-name="domus_django.cita.cita_Secre_Asigna_Cita_822a9594_fk_usuario_id" type="fk" pk-ref="27" fk-ref="7"/>
-		<relation name="cobro_pend_cliente_ID_Cliente_Cobra_fcce5a4e_fk_usuario_id" fq-name="domus_django.cobro_pend_cliente.cobro_pend_cliente_ID_Cliente_Cobra_fcce5a4e_fk_usuario_id" type="fk" pk-ref="27" fk-ref="9"/>
-		<relation name="contrato_cerrado_AI_Responsable_Contrato_c0612e88_fk_usuario_id" fq-name="domus_django.contrato_cerrado.contrato_cerrado_AI_Responsable_Contrato_c0612e88_fk_usuario_id" type="fk" pk-ref="27" fk-ref="10"/>
-		<relation name="contrato_cerrado_Client_Involucrado_C_62ee877c_fk_usuario_i" fq-name="domus_django.contrato_cerrado.contrato_cerrado_Client_Involucrado_C_62ee877c_fk_usuario_i" type="fk" pk-ref="27" fk-ref="10"/>
-		<relation name="deuda_cliente_ID_Cliente_Debe_af6d9415_fk_usuario_id" fq-name="domus_django.deuda_cliente.deuda_cliente_ID_Cliente_Debe_af6d9415_fk_usuario_id" type="fk" pk-ref="27" fk-ref="12"/>
-		<relation name="django_admin_log_user_id_c564eba6_fk_usuario_id" fq-name="domus_django.django_admin_log.django_admin_log_user_id_c564eba6_fk_usuario_id" type="fk" pk-ref="27" fk-ref="13"/>
-		<relation name="empleado_cobro_pendi_ID_Empleado_Cobra_51411c0b_fk_usuario_i" fq-name="domus_django.empleado_cobro_pendiente.empleado_cobro_pendi_ID_Empleado_Cobra_51411c0b_fk_usuario_i" type="fk" pk-ref="27" fk-ref="17"/>
-		<relation name="propiedad_ID_Adquiere_o_Alquila_65f40cd2_fk_usuario_id" fq-name="domus_django.propiedad.propiedad_ID_Adquiere_o_Alquila_65f40cd2_fk_usuario_id" type="fk" pk-ref="27" fk-ref="21"/>
-		<relation name="propiedad_ID_Dueño_a9373bb4_fk_usuario_id" fq-name="domus_django.propiedad.propiedad_ID_Dueño_a9373bb4_fk_usuario_id" type="fk" pk-ref="27" fk-ref="21"/>
-		<relation name="transaccion_Cajera_Responsable_T_60069335_fk_usuario_i" fq-name="domus_django.transaccion.transaccion_Cajera_Responsable_T_60069335_fk_usuario_i" type="fk" pk-ref="27" fk-ref="25"/>
-		<relation name="transaccion_Client_Paga-Cobra_Transaccion_741b7544_fk_usuario_id" fq-name="domus_django.transaccion.`transaccion_Client_Paga-Cobra_Transaccion_741b7544_fk_usuario_id`" type="fk" pk-ref="27" fk-ref="25"/>
-		<relation name="transaccion_Emp_Cobra_Transaccion_dbd6e262_fk_usuario_id" fq-name="domus_django.transaccion.transaccion_Emp_Cobra_Transaccion_dbd6e262_fk_usuario_id" type="fk" pk-ref="27" fk-ref="25"/>
-		<relation name="usuario_groups_usuario_id_161fc80c_fk_usuario_id" fq-name="domus_django.usuario_groups.usuario_groups_usuario_id_161fc80c_fk_usuario_id" type="fk" pk-ref="27" fk-ref="28"/>
-		<relation name="usuario_user_permissions_usuario_id_693d9c50_fk_usuario_id" fq-name="domus_django.usuario_user_permissions.usuario_user_permissions_usuario_id_693d9c50_fk_usuario_id" type="fk" pk-ref="27" fk-ref="29"/>
+		<relation name="transaccion_ruta_doc_NRO_Transaccion_Docu_212dea1a_fk_transacci" fq-name="domus_django.transaccion_ruta_documento.transaccion_ruta_doc_NRO_Transaccion_Docu_212dea1a_fk_transacci" type="fk" pk-ref="26" fk-ref="27"/>
+		<relation name="ai_atiende_ciudad_ID_AI_1c9bb9fe_fk_usuario_id" fq-name="domus_django.ai_atiende_ciudad.ai_atiende_ciudad_ID_AI_1c9bb9fe_fk_usuario_id" type="fk" pk-ref="28" fk-ref="1"/>
+		<relation name="cita_AI_Atiende_Cita_0d4b7743_fk_usuario_id" fq-name="domus_django.cita.cita_AI_Atiende_Cita_0d4b7743_fk_usuario_id" type="fk" pk-ref="28" fk-ref="7"/>
+		<relation name="cita_Client_Solicita_Cita_6a8f8471_fk_usuario_id" fq-name="domus_django.cita.cita_Client_Solicita_Cita_6a8f8471_fk_usuario_id" type="fk" pk-ref="28" fk-ref="7"/>
+		<relation name="cita_Secre_Asigna_Cita_822a9594_fk_usuario_id" fq-name="domus_django.cita.cita_Secre_Asigna_Cita_822a9594_fk_usuario_id" type="fk" pk-ref="28" fk-ref="7"/>
+		<relation name="cobro_pend_cliente_ID_Cliente_Cobra_fcce5a4e_fk_usuario_id" fq-name="domus_django.cobro_pend_cliente.cobro_pend_cliente_ID_Cliente_Cobra_fcce5a4e_fk_usuario_id" type="fk" pk-ref="28" fk-ref="9"/>
+		<relation name="contrato_cerrado_AI_Responsable_Contrato_c0612e88_fk_usuario_id" fq-name="domus_django.contrato_cerrado.contrato_cerrado_AI_Responsable_Contrato_c0612e88_fk_usuario_id" type="fk" pk-ref="28" fk-ref="10"/>
+		<relation name="contrato_cerrado_Client_Involucrado_C_62ee877c_fk_usuario_i" fq-name="domus_django.contrato_cerrado.contrato_cerrado_Client_Involucrado_C_62ee877c_fk_usuario_i" type="fk" pk-ref="28" fk-ref="10"/>
+		<relation name="deuda_cliente_ID_Cliente_Debe_af6d9415_fk_usuario_id" fq-name="domus_django.deuda_cliente.deuda_cliente_ID_Cliente_Debe_af6d9415_fk_usuario_id" type="fk" pk-ref="28" fk-ref="12"/>
+		<relation name="django_admin_log_user_id_c564eba6_fk_usuario_id" fq-name="domus_django.django_admin_log.django_admin_log_user_id_c564eba6_fk_usuario_id" type="fk" pk-ref="28" fk-ref="13"/>
+		<relation name="empleado_cobro_pendi_ID_Empleado_Cobra_51411c0b_fk_usuario_i" fq-name="domus_django.empleado_cobro_pendiente.empleado_cobro_pendi_ID_Empleado_Cobra_51411c0b_fk_usuario_i" type="fk" pk-ref="28" fk-ref="17"/>
+		<relation name="propiedad_ID_Adquiere_o_Alquila_65f40cd2_fk_usuario_id" fq-name="domus_django.propiedad.propiedad_ID_Adquiere_o_Alquila_65f40cd2_fk_usuario_id" type="fk" pk-ref="28" fk-ref="21"/>
+		<relation name="propiedad_ID_Dueño_a9373bb4_fk_usuario_id" fq-name="domus_django.propiedad.propiedad_ID_Dueño_a9373bb4_fk_usuario_id" type="fk" pk-ref="28" fk-ref="21"/>
+		<relation name="transaccion_Cajera_Responsable_T_60069335_fk_usuario_i" fq-name="domus_django.transaccion.transaccion_Cajera_Responsable_T_60069335_fk_usuario_i" type="fk" pk-ref="28" fk-ref="26"/>
+		<relation name="transaccion_Client_Paga-Cobra_Transaccion_741b7544_fk_usuario_id" fq-name="domus_django.transaccion.`transaccion_Client_Paga-Cobra_Transaccion_741b7544_fk_usuario_id`" type="fk" pk-ref="28" fk-ref="26"/>
+		<relation name="transaccion_Emp_Cobra_Transaccion_dbd6e262_fk_usuario_id" fq-name="domus_django.transaccion.transaccion_Emp_Cobra_Transaccion_dbd6e262_fk_usuario_id" type="fk" pk-ref="28" fk-ref="26"/>
+		<relation name="usuario_groups_usuario_id_161fc80c_fk_usuario_id" fq-name="domus_django.usuario_groups.usuario_groups_usuario_id_161fc80c_fk_usuario_id" type="fk" pk-ref="28" fk-ref="29"/>
+		<relation name="usuario_user_permissions_usuario_id_693d9c50_fk_usuario_id" fq-name="domus_django.usuario_user_permissions.usuario_user_permissions_usuario_id_693d9c50_fk_usuario_id" type="fk" pk-ref="28" fk-ref="30"/>
 	</relations>
 </diagram>

@@ -65,9 +65,6 @@
 			<entity id="21" name="usuario" fq-name="domus.usuario">
 				<path name="domus"/>
 			</entity>
-			<entity id="22" name="ai_atiende_ciudad" fq-name="domus.ai_atiende_ciudad">
-				<path name="domus"/>
-			</entity>
 		</data-source>
 	</entities>
 	<relations>
@@ -75,7 +72,6 @@
 		<relation name="Fue_con_Caja_FK" fq-name="domus.transaccion.Fue_con_Caja_FK" type="fk" pk-ref="2" fk-ref="19"/>
 		<relation name="AI_Atiende_Ciudad_FK" fq-name="domus.ai_atiende_ciudad.AI_Atiende_Ciudad_FK" type="fk" pk-ref="5" fk-ref="1"/>
 		<relation name="UbicadaEnCiudad_FK" fq-name="domus.propiedad.UbicadaEnCiudad_FK" type="fk" pk-ref="5" fk-ref="14"/>
-		<relation name="AI_Atiende_Ciudad_FK" fq-name="domus.ai_atiende_ciudad.AI_Atiende_Ciudad_FK" type="fk" pk-ref="5" fk-ref="22"/>
 		<relation name="Contrato_Ruta_Documento_FK" fq-name="domus.contrato_ruta_documento.Contrato_Ruta_Documento_FK" type="fk" pk-ref="7" fk-ref="8"/>
 		<relation name="Pais_Habla_Idioma_FK" fq-name="domus.pais_habla_idioma.Pais_Habla_Idioma_FK" type="fk" pk-ref="11" fk-ref="13"/>
 		<relation name="Pais_Habla_Idioma_FK_1" fq-name="domus.pais_habla_idioma.Pais_Habla_Idioma_FK_1" type="fk" pk-ref="12" fk-ref="13"/>
@@ -103,6 +99,5 @@
 		<relation name="Cobro_Cajera_FK" fq-name="domus.transaccion.Cobro_Cajera_FK" type="fk" pk-ref="21" fk-ref="19"/>
 		<relation name="Incluye_Cliente_FK" fq-name="domus.transaccion.Incluye_Cliente_FK" type="fk" pk-ref="21" fk-ref="19"/>
 		<relation name="Se_Pago_Empleado_FK" fq-name="domus.transaccion.Se_Pago_Empleado_FK" type="fk" pk-ref="21" fk-ref="19"/>
-		<relation name="AI_Atiende_Ciudad_FK_1" fq-name="domus.ai_atiende_ciudad.AI_Atiende_Ciudad_FK_1" type="fk" pk-ref="21" fk-ref="22"/>
 	</relations>
 </diagram>
